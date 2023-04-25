@@ -1,35 +1,27 @@
 import PropTypes from 'prop-types';
 // import css from './Profile.module.css'; // підключення стилів на картку
 
-export function Statistic({title, stats,
-  }) {
-  
+export function Statistics({ title, stats }) {
   return (
     <div>
-      <h2 class="title">Upload stats</h2>
-
-      <ul class="stat-list">
-        <li class="item">
-          <span class="label">.docx</span>
-          <span class="percentage">4%</span>
-        </li>
-        <li class="item">
-          <span class="label">.mp3</span>
-          <span class="percentage">14%</span>
-        </li>
-        <li class="item">
-          <span class="label">.pdf</span>
-          <span class="percentage">41%</span>
-        </li>
-        <li class="item">
-          <span class="label">.mp4</span>
-          <span class="percentage">12%</span>
-        </li>
+      {title && <h2 className="title">{title}</h2>}
+      <ul className="stat-list">
+        {stats.map(({ id, label, percentage }) => (
+          <li className="item" key={id}>
+            <span className="label">{label}</span>
+            <span className="percentage">{percentage}%</span>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
+Statistics.propTypes = {
+  percentage: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};
 Statistics.propTypes = {
   percentage: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
