@@ -39,7 +39,7 @@ export function Profile(props) {
 }
 
 Profile.propTypes = {
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
