@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
-// import css from './Profile.module.css'; // підключення стилів на картку
+import css from './Statistics.module.css'; // підключення стилів
 
 export function Statistics({ title, stats }) {
   return (
-    <div>
-      {title && <h2 className="title">{title}</h2>}
-      <ul className="stat-list">
+    <div className={css.statistics}>
+      {title && <h2 className={css.title}>{title}</h2>}
+      <ul className={css.statsList}>
         {stats.map(({ id, label, percentage }) => (
-          <li className="item" key={id}>
-            <span className="label">{label}</span>
-            <span className="percentage">{percentage}%</span>
+          <li
+            className={css.item}
+            key={id}
+            style={{ backgroundColor: randomHexColor() }}
+          >
+            <span className={css.label}>{label}</span>
+            <span className={css.percentage}>{percentage}%</span>
           </li>
         ))}
       </ul>
@@ -17,13 +21,16 @@ export function Statistics({ title, stats }) {
   );
 }
 
+function randomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
 Statistics.propTypes = {
-  percentage: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-};
-Statistics.propTypes = {
-  percentage: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.string,
+    })
+  ).isRequired,
 };
