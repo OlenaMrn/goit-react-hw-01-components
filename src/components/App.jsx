@@ -6,6 +6,7 @@ import friends from '../data/friends.json';
 import { FriendList } from './FriendList/FriendList'
 import transactions from '../data/transactions.json';
 import { Transactions } from './TransactionHistory/Transactions';
+import css from './Section/Section.module.css';
 
 
 // export const App = () => {
@@ -28,7 +29,7 @@ import { Transactions } from './TransactionHistory/Transactions';
 export function App () {
   return (
     <div>
-      <section>
+      <section className={css.section}>
         <Profile
           username={user.username}
           tag={user.tag}
@@ -38,15 +39,15 @@ export function App () {
         />
       </section>
 
-      <section>
+      <section className={css.section}>
         <Statistics title="Upload stats" stats={data} />
       </section>
 
-      <section>
+      <section className={css.section}>
         <FriendList friends={friends} />
       </section>
 
-      <section>
+      <section className={css.section}>
         <Transactions items={transactions} />
       </section>
     </div>
