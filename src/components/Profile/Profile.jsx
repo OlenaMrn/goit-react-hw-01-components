@@ -4,7 +4,7 @@ import css from './Profile.module.css'; // підключення стилів �
 
 export function Profile(props) {
     const {
-      username = 'User Name',
+      username,
       tag,
       location,
       avatar,
@@ -39,7 +39,7 @@ export function Profile(props) {
 }
 
 Profile.propTypes = {
-  userName: PropTypes.string,
+  username: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
